@@ -33,6 +33,5 @@ public class agendaNotif {
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
-        Log.d("AgendaNotif", "Agendado para: " + horario + " com ID: " + id);
     }
 }

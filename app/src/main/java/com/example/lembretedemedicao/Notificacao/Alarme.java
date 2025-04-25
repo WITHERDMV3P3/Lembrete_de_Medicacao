@@ -119,8 +119,6 @@ public class Alarme extends BroadcastReceiver {
         SharedPreferences preferences = context.getSharedPreferences("meutelefone", Context.MODE_PRIVATE);
         String numero = preferences.getString("numero_salvo", null);
 
-        Log.d("teste", "SMS enviado" + numero);
-
         if (numero == null){
             Toast.makeText(context, "Não é possivel enviar o SMS pois não há um número salvo", Toast.LENGTH_SHORT).show();
         }else {

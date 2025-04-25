@@ -105,14 +105,20 @@ public class MainActivity extends AppCompatActivity {
             Button salvartelefone = botaovisualizar.findViewById(R.id.salvartelefone);
 
             salvartelefone.setOnClickListener(v1 -> {
-                String numero = telefone.getText().toString();
 
-                SharedPreferences preferences = getSharedPreferences("meutelefone", MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("numero_salvo", numero);
-                editor.apply();
+                if (telefone.getText().toString().isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Preencha o campo telefone!", Toast.LENGTH_SHORT).show();
+                } else {
+                    String numero = telefone.getText().toString();
 
-                Toast.makeText(MainActivity.this, "Número salvo com sucesso!! "+numero, Toast.LENGTH_SHORT).show();
+                    SharedPreferences preferences = getSharedPreferences("meutelefone", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("numero_salvo", numero);
+                    editor.apply();
+
+                    Toast.makeText(MainActivity.this, "Número salvo com sucesso!! " + numero, Toast.LENGTH_SHORT).show();
+
+                }
             });
         });
 
@@ -135,9 +141,6 @@ public class MainActivity extends AppCompatActivity {
                     }
 
 
-                    Log.d("SALVAR", "Nome: " + nome + " | Horário: " + horarios);
-
-
                     boolean b = (!nomemedicamento.getText().toString().isEmpty() && !horarios.isEmpty());
                     if (b) {
                         dao.insert(medicamento);
@@ -151,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                     agendaNotif.agendar(MainActivity.this, medicamento.getHorario(), medicamento.getId(), medicamento.getNomemedicamento());
                     atualizarlista();
                 } else {
-                    Toast.makeText(MainActivity.this, "Preencha todos os campos!" + horario, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
                 }
                 atualizarlista();
 
@@ -179,9 +182,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
     public void abrirEditor(medicamento medicamento) {
         BottomSheetDialog editarDialog = new BottomSheetDialog(MainActivity.this);
         View editarView = getLayoutInflater().inflate(R.layout.telaeditar, null);
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         nomeEdit.setText(medicamento.getNomemedicamento());
-        horarioSelecionado.setText("O horario salvo é: "+medicamento.getHorario());
+        horarioSelecionado.setText("O horario salvo é: " + medicamento.getHorario());
 
         final String[] novoHorario = {medicamento.getHorario()}; //TODO Variável para armazenar o novo horário selecionado
 
@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
                     (view, horaSelecionada, minutoSelecionado) -> {
                         @SuppressLint("DefaultLocale")
                         String horarioFormatado = String.format("%02d:%02d", horaSelecionada, minutoSelecionado);
-                        horarioSelecionado.setText("O horário selecionado foi: "+horarioFormatado);
+                        horarioSelecionado.setText("O horário selecionado foi: " + horarioFormatado);
                         novoHorario[0] = horarioFormatado;
                     }, hora, minuto, true);
             timePickerDialog.show();

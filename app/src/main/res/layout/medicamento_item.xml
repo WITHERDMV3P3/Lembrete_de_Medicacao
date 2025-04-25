@@ -27,13 +27,11 @@
         android:id="@+id/editar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#FFC107"
         android:text="Editar" />
 
     <Button
         android:id="@+id/excluir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#F44336"
         android:text="Excluir" />
 </LinearLayout>

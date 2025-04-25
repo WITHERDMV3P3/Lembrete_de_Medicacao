@@ -66,11 +66,8 @@
             android:layout_width="395dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center|center_horizontal"
-            android:backgroundTint="#FF0000"
             android:gravity="center"
             android:text="Clique aqui para selecionar o horário:"
-            android:textColor="@color/white"
-            android:textColorLink="#4CAF50"
             android:textSize="16sp" />
 
         <TextView
@@ -85,10 +82,7 @@
             android:layout_width="351dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="#4CAF50"
             android:text="Salvar Medicamento"
-            android:textColor="@color/white"
-            android:textColorLink="#4CAF50"
             android:textSize="16sp" />
 
         <androidx.recyclerview.widget.RecyclerView
